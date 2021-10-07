@@ -1,0 +1,27 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    height: 100px;
+}
+.userPhoto {
+    max-height: 100px;
+    border-radius: 50%;
+}
+.forms {
+    display: flex;
+    align-items: center;
+}
+.forms button {
+    margin-left: 10px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+form input {
+    margin-top: 10px;
+}
+.err {
+    color: red;
+}
