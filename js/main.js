@@ -28,25 +28,23 @@ const goAuth = async () => {
     })
     .then(res => res.json())
     .then(result => {
-        if(result.length === 0){
-            console.log('success')
-            location.reload()
-        }
-        else{
-            createErrorAuth(result)
-        }
+        Object.values(result[0])[0] === true && Object.values(result[1])[0] === true
+        ? location.reload()
+        : createErrorAuth(result)
     })
 }
 const goRegistration = async () => {
     await fetch('./Controllers/RegisterController.php',{
         method: 'POST',
-        body: new FormData(document.querySelector('.formRegistration'))
+        body: new FormData(document.querySelector('.formRegistration')),
+        headers: {'X-Requested-With': 'XMLHttpRequest'}
     })
     .then(res => res.json())
     .then(result => {
         if(result === 1){
             getEmptyInputsRegister()
         }else {
+            console.log(result)
             createErrorRegister(result)
         }
     })
@@ -68,7 +66,7 @@ const createErrorAuth = (error) => {
     loginErr = passwordErr = ''
     error.forEach(err => {
         if(err.login){
-            loginErr = err.login
+            err.login === true ? loginErr = '' : loginErr = err.login
             AuthLoginErr.textContent = loginErr
         }
         if(err.password){
@@ -85,8 +83,11 @@ const createErrorRegister = (error) => {
     let passwordError = document.querySelector('span.passwordError')
     let confirmError = document.querySelector('span.confirmError')
     let emailError = document.querySelector('.emailError')
-    LoginError.textContent = passwordError.textContent = confirmError.textContent = emailError.textContent = ''
+    let nameError = document.querySelector('.nameError')
+    LoginError.textContent = passwordError.textContent = confirmError.textContent = nameError.textContent = emailError.textContent = ''
+    
     error.forEach(item => {
+        console.log(item)
         if(item.login){
             loginErr = item.login
             LoginError.textContent = loginErr
@@ -103,11 +104,10 @@ const createErrorRegister = (error) => {
             emailErr = item.email
             emailError.textContent = emailErr
         }
-        // if(item.name){
-        //     nameErr = item.name
-        // }else{
-        //     nameErr = ''
-        // }
+        if(item.name){
+            nameErr = item.name
+            nameError.textContent = nameErr
+        }
         
         submit.addEventListener('submit', goRegistration)
         

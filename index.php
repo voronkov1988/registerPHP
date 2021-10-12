@@ -47,9 +47,9 @@ session_start();
                 </div>
                 <div class="modal-body">
                     <form class="formAuthorization">
-                        <input class="inpLogin" type="text" placeholder="login" name="login" value="evgeniy">
+                        <input class="inpLogin" type="text" placeholder="login" name="login">
                         <span class="err AuthLoginError"></span>
-                        <input type="password" placeholder="password" name="password" value="12345678">
+                        <input type="password" placeholder="password" name="password">
                         <span class="err AuthPasswordError"></span>
                         <input class="submit submitAuth" type="submit">
                     </form>
@@ -66,21 +66,21 @@ session_start();
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Форма регистрации</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form class="formRegistration">
-                        <input type="inputs text" placeholder="login" name="login" value="evgeniy">
+                        <input type="inputs text" placeholder="login" name="login">
                         <span class="err LoginError"></span>
-                        <input type="inputs password" placeholder="password" name="passwordReg" value="12345678">
+                        <input type="password" placeholder="password" name="passwordReg">
                         <span class="err passwordError"></span>
-                        <input type="inputs password" placeholder="confirm password" name="confirm" value="12345678">
+                        <input type="password" placeholder="confirm password" name="confirm">
                         <span class="err confirmError"></span>
-                        <input type="inputs email" placeholder="email" name="email" value="z.voronkovmail.ru">
+                        <input type="inputs email" placeholder="email" name="email">
                         <span class="err emailError"></span>
-                        <input type="inputs text" placeholder="name" name="username" value="evgeniy">
+                        <input type="inputs text" placeholder="name" name="username">
                         <span class="err nameError"></span>
                         <input class="submit submitRegistration" type="submit" value="submit">
                     </form>
